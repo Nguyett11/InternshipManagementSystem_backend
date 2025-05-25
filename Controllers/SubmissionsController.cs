@@ -73,20 +73,6 @@ namespace IMS.Controllers
             return Ok(submissions);
         }
 
-        //[HttpGet("{id}")]
-        //[Authorize(Roles = "1,2,3")]
-        //public IActionResult GetSubmissionById(int id)
-        //{
-        //    var submission = _context.Submissions.FirstOrDefault(s => s.submission_id == id);
-
-        //    if (submission == null)
-        //    {
-        //        return NotFound(new { message = "Không tìm thấy sinh viên với ID đã cho." });
-        //    }
-
-        //    return Ok(submission);
-        //}
-
         [HttpGet("{id}")]
         [Authorize(Roles = "1,2,3")]
         public IActionResult GetSubmissionById(int id)
@@ -158,13 +144,6 @@ namespace IMS.Controllers
 
             _context.Submissions.Add(newSubmission);
             await _context.SaveChangesAsync();
-
-            // Gửi email cho giảng viên
-            //var lecturerEmail = "letrongcong3@gmail.com"; // có thể lấy từ DB theo reportId
-            //var subject = "Có bài nộp mới từ sinh viên";
-            //var body = $"<p>Sinh viên {submission.StudentCode} vừa nộp bài cho báo cáo #{submission.ReportId}.</p>";
-
-            //await _emailService.SendEmailAsync(lecturerEmail, subject, body);
 
             // Lấy email của giảng viên từ lecturer_id trong Reports
             var lecturerEmail = await _context.Reports
