@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "k0FHI3C0kaucgPDsX7TibrqolmX2kk+lhLOmrpadpOM=",
+  "Source": "IMS",
+  "BasePath": "_content/IMS",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
