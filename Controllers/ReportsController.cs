@@ -183,57 +183,5 @@ namespace IMS.Controllers
         {
             return _context.Reports.Any(r => r.report_id == id);
         }
-
-        //[HttpGet("{id}")]
-        //[Authorize(Roles = "1,2")]
-        //public IActionResult GetReportById(int id)
-        //{
-        //    var report = _context.Reports.FirstOrDefault(r => r.report_id == id);
-
-        //    if (report == null)
-        //    {
-        //        return NotFound(new { message = "Không tìm thấy report với ID đã cho." });
-        //    }
-
-        //    return Ok(report);
-        //}
-
-        //[HttpGet("ByStudentCode")]
-        //[Authorize(Roles = "1,2")]
-        //public IActionResult GetReportsByStudentCode([FromQuery] long studentCode)
-        //{
-        //    var reports = _context.Reports
-        //        .Where(report =>
-        //            !_context.Submissions.Any(sub =>
-        //                sub.student_code == studentCode))
-        //        .ToList();
-
-        //    return Ok(reports);
-        //}
-
-
-        //[HttpGet("ByUnsubmitted")]
-        //[Authorize(Roles = "1,2")]
-        //public IActionResult GetReportIfNotSubmitted([FromQuery] int reportId, [FromQuery] long studentCode)
-        //{
-        //    var report = _context.Reports.FirstOrDefault(r => r.report_id == reportId);
-        //    if (report == null)
-        //    {
-        //        return NotFound(new { message = "Không tìm thấy báo cáo." });
-        //    }
-
-        //    var submission = _context.Submissions
-        //        .FirstOrDefault(s => s.report_id == reportId && s.student_code == studentCode);
-
-        //    if (submission != null && submission.status == "Đã nộp")
-        //    {
-        //        return BadRequest(new { message = "Báo cáo này đã được nộp bởi sinh viên." });
-        //    }
-
-        //    return Ok(report);
-        //}
-
-
-
     }
 }
