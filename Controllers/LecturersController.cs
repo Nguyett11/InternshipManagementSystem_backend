@@ -60,7 +60,7 @@ namespace IMS.Controllers
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                return BadRequest(new { message = "Vui lòng nhập tên công ty cần tìm kiếm." });
+                return BadRequest(new { message = "Vui lòng nhập tên giáo viên cần tìm kiếm." });
             }
 
             var matchedLecturers = await _context.Lecturers
@@ -69,7 +69,7 @@ namespace IMS.Controllers
 
             if (matchedLecturers == null || matchedLecturers.Count == 0)
             {
-                return NotFound(new { message = "Không tìm thấy công ty nào phù hợp." });
+                return NotFound(new { message = "Không tìm thấy giáo vien nào phù hợp." });
             }
 
             return Ok(matchedLecturers);
