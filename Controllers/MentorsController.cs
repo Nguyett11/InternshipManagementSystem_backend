@@ -46,7 +46,7 @@ namespace IMS.Controllers
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                return BadRequest(new { message = "Vui lòng nhập tên công ty cần tìm kiếm." });
+                return BadRequest(new { message = "Vui lòng nhập tên mentor cần tìm kiếm." });
             }
 
             var matchedMentors = await _context.Mentors
@@ -55,7 +55,7 @@ namespace IMS.Controllers
 
             if (matchedMentors == null || matchedMentors.Count == 0)
             {
-                return NotFound(new { message = "Không tìm thấy công ty nào phù hợp." });
+                return NotFound(new { message = "Không tìm thấy mentor nào phù hợp." });
             }
 
             return Ok(matchedMentors);
