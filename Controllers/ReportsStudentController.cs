@@ -182,102 +182,12 @@ namespace IMS.Controllers
             return Ok(result);
         }
 
-
-        //[HttpGet("report-students/{reportId}")]
-        //[Authorize(Roles = "1,3")]
-        //public IActionResult GetReportStudentsByReportId(int reportId)
-        //{
-        //    var reportStudents = _context.ReportStudents
-        //                                 .Where(rs => rs.report_id == reportId)
-        //                                 .ToList();
-
-        //    if (!reportStudents.Any())
-        //    {
-        //        return NotFound("Không tìm thấy học viên nào trong báo cáo này.");
-        //    }
-
-        //    return Ok(reportStudents);
-        //}
-
-
-
-
-        //[HttpGet("{id}")]
-        //[Authorize(Roles = "1,2")]
-        //public IActionResult GetReportsByStudentCode(long id)
-        //{
-        //    var result = (from r in _context.Reports
-        //                  join rs in _context.ReportStudents on r.report_id equals rs.report_id
-        //                  join s in _context.Submissions on new { r.report_id, student_code = id } equals new { s.report_id, s.student_code } into sj
-        //                  from submission in sj.DefaultIfEmpty()
-        //                  join g in _context.Grading on r.report_id equals g.submission_id into gj
-        //                  from grading in gj.DefaultIfEmpty()
-        //                  where rs.student_code == id
-        //                  select new ReportWithGradingAndSubmissionDto
-        //                  {
-        //                      Report = r,
-        //                      Grading = grading,
-        //                      Submission = submission
-        //                  }).ToList();
-
-        //    if (!result.Any())
-        //    {
-        //        return NotFound("Không tìm thấy báo cáo nào cho sinh viên này.");
-        //    }
-
-        //    return Ok(result);
-        //}
-
         public class ReportWithGradingAndSubmissionDto
         {
             public Reports Report { get; set; }
             public Grading Grading { get; set; }
             public Submissions Submission { get; set; }
         }
-
-
-
-        //[HttpGet("{id}")]
-        //[Authorize(Roles = "1,2")]
-        //public IActionResult GetReportsByStudentCode(long id)
-        //{
-        //    var reports = (from r in _context.Reports
-        //                   join rs in _context.ReportStudents
-        //                   on r.report_id equals rs.report_id
-        //                   where rs.student_code == id
-        //                   select r).ToList();
-
-        //    if (reports == null || !reports.Any())
-        //    {
-        //        return NotFound("Không tìm thấy báo cáo nào cho sinh viên này.");
-        //    }
-
-        //    return Ok(reports);
-        //}
-
-
-        //[HttpGet("{id}")]
-        //[Authorize(Roles = "1,2")]
-        //public IActionResult GetReportsByStudentCode(long id)
-        //{
-        //    var reportWithGradings = (from r in _context.Reports
-        //                              join rs in _context.ReportStudents on r.report_id equals rs.report_id
-        //                              join g in _context.Grading on r.report_id equals g.submission_id into gj
-        //                              from grading in gj.DefaultIfEmpty() // left join
-        //                              where rs.student_code == id
-        //                              select new ReportWithGradingDto
-        //                              {
-        //                                  Report = r,
-        //                                  Grading = grading
-        //                              }).ToList();
-
-        //    if (!reportWithGradings.Any())
-        //    {
-        //        return NotFound("Không tìm thấy báo cáo nào cho sinh viên này.");
-        //    }
-
-        //    return Ok(reportWithGradings);
-        //}
 
         private object await(IQueryable<Reports> reports)
         {
