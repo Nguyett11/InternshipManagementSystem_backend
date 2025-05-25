@@ -160,41 +160,6 @@ namespace IMS.Controllers
             });
         }
 
-
-        // Đăng ký
-        //[HttpPost("register")]
-        //public async Task<ActionResult> DangKy([FromForm] string full_name, [FromForm] string email, [FromForm] string password, [FromForm] string phone_number, [FromForm] string gender, [FromForm] DateTime date_of_birth, [FromForm] string desired_role, [FromForm] int role_id)
-        //{
-        //    // Kiểm tra email đã tồn tại chưa
-        //    var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.email == email);
-        //    if (existingUser != null)
-        //    {
-        //        return BadRequest(new { success = false, message = "Email đã tồn tại" });
-        //    }
-
-        //    // Hash mật khẩu trước khi lưu
-        //    string hashedPassword = GetSha256Hash(password);
-
-        //    var newUser = new Users
-        //    {
-        //        full_name = full_name,
-        //        email = email,
-        //        password = hashedPassword,
-        //        phone_number = phone_number,
-        //        gender = gender,
-        //        date_of_birth = date_of_birth,
-        //        desired_role = desired_role,
-        //        role_id = role_id,
-        //        is_active = true // mặc định tài khoản mới là active
-        //    };
-
-        //    _context.Users.Add(newUser);
-        //    await _context.SaveChangesAsync();
-
-        //    return Ok(new { success = true, message = "Đăng ký thành công", user_id = newUser.user_id });
-        //}
-
-        // API lấy chi tiết người dùng từ token
         //[Authorize]
         [HttpGet("profile")]
         public async Task<ActionResult> GetUserProfile()
@@ -285,51 +250,3 @@ namespace IMS.Controllers
 
     }
 }
-
-
-
-//Đăng nhập
-//[HttpPost("login")]
-//public async Task<ActionResult> DangNhap([FromForm] string username, [FromForm] string password)
-//{
-//    // Debugging: Log the received username and password
-//    Console.WriteLine($"Username: {username}, Password: {password}");
-
-//    var user = await _context.Users
-//        .FirstOrDefaultAsync(u => u.email == username);
-
-//    if (user == null || !VerifyPassword(user, password))
-//    {
-//        return Unauthorized(new { success = false, message = "Đăng nhập thất bại" });
-
-//    }
-
-//    //create token
-//    var claims = new[]{
-//            new Claim(JwtRegisteredClaimNames.Sub, _config["Jwt:Subject"]),
-//            new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
-//            new Claim("id",user.user_id.ToString()),
-//            new Claim(ClaimTypes.Role, user.role_id.ToString())
-
-//     };
-//    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
-//    var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-//    var token = new JwtSecurityToken(
-//        _config["Jwt:Issuer"],
-//        _config["Jwt:Audience"],
-//        claims,
-//        expires: DateTime.UtcNow.AddMinutes(60),
-//        signingCredentials: signIn
-//        );
-//    string accesstoken = new JwtSecurityTokenHandler().WriteToken(token);
-
-//    var login_data = new
-//    {
-//        status = "ok",
-//        message = "Login success",
-//        token = accesstoken,
-//        user = user.full_name
-//    };
-
-//    return Ok(new { data = login_data });
-//}
